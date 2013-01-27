@@ -9,6 +9,7 @@ struct cpu_t *cpu_new (void)
      if (!cpu)
      {
           log (LOG_CRITICAL, "[cpu_new]: Can't allocate %lu bytes", sizeof (struct cpu_t));
+          return NULL;
      }
 
      return cpu;
