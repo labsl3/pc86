@@ -62,7 +62,7 @@ bool log_open (int level, FILE *dest)
           }
 
           /* open a stream for the copied file descriptor */
-          logger->dest = fdopen (fdcopy, 'a+');
+          logger->dest = fdopen (fdcopy, "a+");
 
           if (logger->dest == NULL)
           {

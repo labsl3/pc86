@@ -4,8 +4,11 @@
 #include "types.h"
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include <string.h>
 #include <errno.h>
+#include <stdarg.h>
 
 /*! \brief Level of the log message */
 enum LogLevel
