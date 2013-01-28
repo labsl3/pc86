@@ -8,7 +8,7 @@ struct cpu_t
 {
      struct registers_t regs;        /*!< CPU registers */
 
-     int8_t memory[0x100000];  /*!< 1Mb of RAM available */
+     int8_t memory[0x10000][0x10000];  /*!< Segmented RAM from 0000h:0000h to FFFFh:FFFFh */
 };
 
 /*!
