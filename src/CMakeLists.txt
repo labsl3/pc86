@@ -10,6 +10,7 @@ file(GLOB C_CPU_FILES "cpu/*.c")
 file(GLOB C_UTILS_FILES "utils/*.c")
 
 set(C_FILES 
+  ${C_FILES}
   ${C_CPU_FILES}
   ${C_UTILS_FILES}
 )
