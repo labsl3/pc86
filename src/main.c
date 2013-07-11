@@ -16,45 +16,47 @@ int main (int argc, char* argv[])
 {
      char const * file_name = NULL;
      
-     /*Parameters parsing*/
-     int c;
-     int digit_optind = 0;
+     /* Parameters parsing */
+     int optidx = 0;
+     int c      = 0;
 
-     while (1) {
-          int this_option_optind = optind ? optind : 1;
-          int option_index = 0;
-          static struct option long_options[] = {
-               {"help",     no_argument, 0,  'h' },
-               {0,         0,                 0,  0 }
-          };
+     struct option const long_options[] =
+     {
+          { "help", no_argument, 0, 'h' },
+          { NULL,   NULL,        0, 0 }
+     };
 
-          c = getopt_long(argc, argv, "h", long_options, &option_index);
-          if (c == -1)
-               break;
-
-          switch (c) {
+     while ((c = getopt_long (argc, argv, "h", long_options, &optidx)) != -1)
+     {
+          switch (c)
+          {
                case 'h':
                     display_help ();
-                    return EXIT_SUCCESS;
+                    exit (EXIT_SUCCESS);
 
-               case '?'://An invalid option was supplied
+               /* An invalid option was supplied */
+               case '?':
                     display_help ();
-                    return EXIT_FAILURE;
+                    exit (EXIT_FAILURE);
+
                default:
                     break;
           }
      }
 
-     if (optind < argc) {
+     if (optind < argc)
+     {
           file_name = argv[optind++];
-          //TODO:execute this file
+          /* TODO: execute this file */
      }
      else
      {
-          printf ("The file name is required\n");
+          fprintf (stderr, "Error: No input file.\n");
           display_help ();
-          return EXIT_FAILURE;
+
+          exit (EXIT_FAILURE);
      }
+
      return EXIT_SUCCESS;
 }
 
